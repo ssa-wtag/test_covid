@@ -8,7 +8,7 @@ Because this template uses the Apache 2.0 license, then this app does as well...
 Copyright 2015, Newman Works, LLC
 Copyright 2013-2015 Iron Summit Media Strategies, LLC.
 
-This code released under the [Apache 2.0](https://github.com/IronSummitMedia/start_bootstrap_landing_page/blob/gh-pages/LICENSE) license.
+This code released under the [Apache 2.0](https://github.com/IronSummitMedia/start_bootstrap_landing_page/blob/master/LICENSE) license.
 
 Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at [http://www.apache.org/licenses/LICENSE-2.0](http://www.apache.org/licenses/LICENSE-2.0).
 
