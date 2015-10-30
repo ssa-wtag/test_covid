@@ -1,0 +1,79 @@
+%a{name: 'services'}
+.content-section-a
+  .container
+    .row
+      .col-lg-5.col-sm-6
+        %hr.section-heading-spacer
+        .clearfix
+        %h2.section-heading
+          Death to the Stock Photo:
+          %br
+          Special Thanks
+        %p.lead
+          A special thanks to
+          = link_to 'Death to the Stock Photo', 'http://join.deathtothestockphoto.com', target: '_blank'
+          for providing the photographs that you see in this template. Visit their website to become a member.
+      .col-lg-5.col-lg-offset-2.col-sm-6
+        = image_tag 'ipad.png', class: 'img-responsive', alt: ''
+.content-section-b
+  .container
+    .row
+      .col-lg-5.col-lg-offset-1.col-sm-push-6.col-sm-6
+        %hr.section-heading-spacer
+        .clearfix
+        %h2.section-heading
+          3D Device Mockups
+          %br
+          by PSDCovers
+        %p.lead
+          Turn your 2D designs into high quality, 3D product shots in seconds using free Photoshop actions by
+          = succeed '!' do
+            = link_to 'PSDCovers', 'http://www.psdcovers.com/', target: '_blank'
+          Visit their website to download some of their awesome, free photoshop actions!
+      .col-lg-5.col-sm-pull-6.col-sm-6
+        = image_tag 'dog.png', class: 'img-responsive', alt: ''
+.content-section-a
+  .container
+    .row
+      .col-lg-5.col-sm-6
+        %hr.section-heading-spacer
+        .clearfix
+        %h2.section-heading
+          Google Web Fonts and
+          %br
+          Font Awesome Icons
+        %p.lead
+          This template features the 'Lato' font, part of the
+          = succeed ',' do
+            = link_to 'Google Web Font library', 'http://www.google.com/fonts', target: '_blank'
+          as well as
+          = succeed '.' do
+            = link_to 'icons from Font Awesome', 'http://fontawesome.io', target: '_blank'
+      .col-lg-5.col-lg-offset-2.col-sm-6
+        = image_tag 'phones.png', class: 'img-responsive', alt: ''
+
+-#
+%a{name: 'contact'}
+.banner
+  .container
+    .row
+      .col-lg-6
+        %h2
+          Connect to Start Bootstrap:
+      .col-lg-6
+        %ul.list-inline.banner-social-buttons
+          %li
+            = link_to 'https://twitter.com/SBootstrap', class: 'btn btn-default btn-lg' do
+              %i.fa.fa-twitter.fa-fw
+              %span.network-name
+                Twitter
+          %li
+            = link_to 'https://github.com/IronSummitMedia/startbootstrap', class: 'btn btn-default btn-lg' do
+              %i.fa.fa-github.fa-fw
+              %span.network-name
+                Github
+          %li
+            = link_to '#', class: 'btn btn-default btn-lg' do
+              %i.fa.fa-linkedin.fa-fw
+              %span.network-name
+                LinkedIn
