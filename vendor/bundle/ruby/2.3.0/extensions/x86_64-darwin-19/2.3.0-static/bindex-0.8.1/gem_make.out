@@ -1,0 +1,15 @@
+current directory: /Users/subratosarker/Documents/GitHub/test_covid/vendor/bundle/ruby/2.3.0/gems/bindex-0.8.1/ext/skiptrace
+/Users/subratosarker/.rbenv/versions/2.3.6/bin/ruby -r ./siteconf20200613-4168-rd2wif.rb extconf.rb
+creating Makefile
+
+current directory: /Users/subratosarker/Documents/GitHub/test_covid/vendor/bundle/ruby/2.3.0/gems/bindex-0.8.1/ext/skiptrace
+make "DESTDIR=" clean
+
+current directory: /Users/subratosarker/Documents/GitHub/test_covid/vendor/bundle/ruby/2.3.0/gems/bindex-0.8.1/ext/skiptrace
+make "DESTDIR="
+compiling cruby.c
+linking shared-object skiptrace/internal/cruby.bundle
+
+current directory: /Users/subratosarker/Documents/GitHub/test_covid/vendor/bundle/ruby/2.3.0/gems/bindex-0.8.1/ext/skiptrace
+make "DESTDIR=" install
+/usr/local/bin/ginstall -c -m 0755 cruby.bundle ./.gem.20200613-4168-1qxj70t/skiptrace/internal

@@ -1,0 +1,15 @@
+current directory: /Users/subratosarker/Documents/GitHub/test_covid/vendor/bundle/ruby/2.3.0/gems/websocket-driver-0.6.5/ext/websocket-driver
+/Users/subratosarker/.rbenv/versions/2.3.6/bin/ruby -r ./siteconf20200613-4168-g3hd35.rb extconf.rb
+creating Makefile
+
+current directory: /Users/subratosarker/Documents/GitHub/test_covid/vendor/bundle/ruby/2.3.0/gems/websocket-driver-0.6.5/ext/websocket-driver
+make "DESTDIR=" clean
+
+current directory: /Users/subratosarker/Documents/GitHub/test_covid/vendor/bundle/ruby/2.3.0/gems/websocket-driver-0.6.5/ext/websocket-driver
+make "DESTDIR="
+compiling websocket_mask.c
+linking shared-object websocket_mask.bundle
+
+current directory: /Users/subratosarker/Documents/GitHub/test_covid/vendor/bundle/ruby/2.3.0/gems/websocket-driver-0.6.5/ext/websocket-driver
+make "DESTDIR=" install
+/usr/local/bin/ginstall -c -m 0755 websocket_mask.bundle ./.gem.20200613-4168-1trdqv4
