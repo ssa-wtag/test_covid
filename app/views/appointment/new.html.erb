@@ -1,2 +1,41 @@
-<h1>Appointment#new</h1>
-<p>Find me in app/views/appointment/new.html.erb</p>
+<div class="dashboard">
+  <% flash.each do |key, value| %>
+    <div class="alert">
+      <%= value %>
+    </div>
+  <% end %>
+  <div id="flash-box">
+    <div></div>
+  </div>
+</div>
+
+<div class="create-appointment">
+  <h1>Create Appointment</h1>
+  <p>Please fill in this form to create an appointment.</p>
+  <%= form_for @appointment, :as => :appointment, :url => appointment_index_path(@user) do |f| %>
+    <div class="first-name-appointment">
+      <p class="input-label">
+        <%= f.label 'Fist Name:' %><br/>
+        <%= f.text_field :first_name, required: true %>
+      </p>
+    </div>
+    <div class="last-name-appointment">
+      <p class="input-label">
+        <%= f.label 'last Name:' %><br />
+        <%= f.text_field :last_name, required: true %>
+      </p>
+    </div>
+    <p class="input-label">
+      <%= f.label 'Mobile:' %><br />
+      <%= f.text_field :mobile, required: true %>
+    </p>
+    <p class="input-label">
+      <%= f.label 'Desired Date:' %><br />
+      <%= f.datetime_select :desired_date %>
+    </p>
+    <div class="submit-field">
+      <%= f.submit 'Submit', class: 'submit-btn' %>
+      <%= f.submit 'Clear Fields', :type => 'reset', class: 'reset-btn' %>
+    </div>
+  <% end %>
+</div>

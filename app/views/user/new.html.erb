@@ -1,0 +1,33 @@
+<div class="dashboard">
+  <% flash.each do |key, value| %>
+    <div class="alert">
+      <%= value %>
+    </div>
+  <% end %>
+  <div id="flash-box">
+    <div></div>
+  </div>
+</div>
+
+<div class="create-appointment create-appointment-log-in">
+  <h1>Log In</h1>
+  <p>Log in to view all appointments</p>
+  <%= form_for User.new, :as => :user, :url => user_index_path(@user) do |f| %>
+    <div class="email">
+      <p class="input-label">
+        <%= f.label 'Email:' %><br/>
+        <%= f.text_field :email, required: true %>
+      </p>
+    </div>
+    <div class="password">
+      <p class="input-label">
+        <%= f.label 'Password:' %><br />
+        <%= f.text_field :password, required: true %>
+      </p>
+    </div>
+    <div class="submit-field">
+      <%= f.submit 'Submit', class: 'submit-btn' %>
+      <%= f.submit 'Clear Fields', :type => 'reset', class: 'reset-btn' %>
+    </div>
+  <% end %>
+</div>

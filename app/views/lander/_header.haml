@@ -5,23 +5,21 @@
       .col-lg-12
         .intro-message
           %h1
-            Landing Page
+            Make Appointment and See result of Covid-19
           %h3
-            A Template by Start Bootstrap
+            An Initiative of ICT Division Bangladesh
           %hr.intro-divider
-          %ul.list-inline.intro-social-buttons
-            %li
-              = link_to 'https://twitter.com/SBootstrap', class: 'btn btn-default btn-lg' do
-                %i.fa.fa-twitter.fa-fw
-                %span.network-name
-                  Twitter
-            %li
-              = link_to 'https://github.com/IronSummitMedia/startbootstrap', class: 'btn btn-default btn-lg' do
-                %i.fa.fa-github.fa-fw
-                %span.network-name
-                  Github
-            %li
-              = link_to '#', class: 'btn btn-default btn-lg' do
-                %i.fa.fa-linkedin.fa-fw
-                %span.network-name
-                  LinkedIn
+          .stat-link
+            %ul.list-inline.intro-social-buttons
+              %li
+                = link_to new_appointment_path, class: 'btn btn-default btn-lg' do
+                  %span.network-name
+                    Make Appointment
+                %li
+                  = link_to '#', class: 'btn btn-default btn-lg' do
+                    %span.network-name
+                      Results
+                %li
+                  = link_to new_user_path, class: 'btn btn-default btn-lg' do
+                    %span.network-name
+                      All Appointments

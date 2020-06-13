@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  resources :user
+
   resources :appointment
 
   resources :lander, only: [:index]

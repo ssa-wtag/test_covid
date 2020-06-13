@@ -1,2 +1,24 @@
-<h1>Appointment#index</h1>
-<p>Find me in app/views/appointment/index.html.erb</p>
+<div class="dashboard">
+  <% flash.each do |key, value| %>
+    <div class="alert">
+      <%= value %>
+    </div>
+  <% end %>
+  <div id="flash-box">
+    <div></div>
+  </div>
+</div>
+
+<div class="create-appointment">
+  <h2 class="title is-4"><%= 'All Appointments' %></h2>
+
+  <table id="appointment-table" class="table sort-data">
+    <% @appointments.each do |event| %>
+      <tr class="table-bordered">
+        <td class="row-expand"><%= event.first_name %></td>
+        <td class="row-expand"><%= event.last_name %></td>
+        <td class="row-expand"><%= event.desired_date %></td>
+      </tr>
+    <% end %>
+  </table>
+</div>
