@@ -1,0 +1,13 @@
+current directory: /Users/subratosarker/Documents/GitHub/test_covid/vendor/bundle/ruby/2.3.0/gems/json-1.8.6/ext/json
+/Users/subratosarker/.rbenv/versions/2.3.6/bin/ruby -r ./siteconf20200613-84380-1ua38ed.rb extconf.rb
+creating Makefile
+
+current directory: /Users/subratosarker/Documents/GitHub/test_covid/vendor/bundle/ruby/2.3.0/gems/json-1.8.6/ext/json
+make "DESTDIR=" clean
+
+current directory: /Users/subratosarker/Documents/GitHub/test_covid/vendor/bundle/ruby/2.3.0/gems/json-1.8.6/ext/json
+make "DESTDIR="
+make: Nothing to be done for `all'.
+
+current directory: /Users/subratosarker/Documents/GitHub/test_covid/vendor/bundle/ruby/2.3.0/gems/json-1.8.6/ext/json
+make "DESTDIR=" install
