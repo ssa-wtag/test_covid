@@ -6,7 +6,7 @@ class SmsSender
   end
 
   def initialize(appointment)
-    @appointment = appointment
+    @appointment = Appointment.find(appointment)
   end
 
   def call

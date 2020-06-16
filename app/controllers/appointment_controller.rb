@@ -25,7 +25,8 @@ class AppointmentController < ApplicationController
     appointment.confirmed_date_from = appointment_params[:confirmed_date_from].to_datetime
     appointment.confirmed_date_to = appointment_params[:confirmed_date_to].to_datetime
     appointment.sent_sms = true
-    if SmsSender.call(appointment)
+    appointment.save
+    if SmsSender.call(params[:id])
       appointment.save
       flash[:notice] = "Message Sent for #{appointment.first_name} on #{appointment.confirmed_date_from}"
     end
