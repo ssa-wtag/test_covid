@@ -46,6 +46,7 @@ class AppointmentController < ApplicationController
     params.require(:appointment).permit(:first_name,
                                         :last_name,
                                         :mobile,
+                                        :address,
                                         :desired_date_from,
                                         :desired_date_to,
                                         :confirmed_date_from,
