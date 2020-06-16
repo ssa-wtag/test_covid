@@ -11,14 +11,19 @@ html {
 
 .create-appointment {
   background-color: white;
-  height: 70%;
+  height: 82%;
   width: 30%;
-  margin: 5% 30%;
+  margin: 1% 30%;
   padding: 16px;
 }
 
 .create-appointment-log-in {
   height: 50%;
+}
+
+.create-appointment-confirm {
+  width: 70%;
+  margin: 5% 15%;
 }
 
 .input-label {
@@ -41,13 +46,20 @@ input[type=text], input[type=datetime_select] {
 .submit-btn {
   display: inline;
   margin-left: 10px;
-  height: 50px;
-  width: 40%;
+  height: 42px;
+  width: 35%;
+}
+
+.submit-btn-sms {
+  display: inline;
+  margin-left: 0px;
+  height: 35px;
+  width: 85%;
 }
 
 .reset-btn {
   display: inline;
   margin-left: 70px;
-  height: 50px;
-  width: 40%;
+  height: 42px;
+  width: 35%;
 }

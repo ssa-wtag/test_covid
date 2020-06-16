@@ -30,8 +30,13 @@
       <%= f.text_field :mobile, required: true %>
     </p>
     <p class="input-label">
+      <%= f.label 'Address:' %><br />
+      <%= f.text_field :address, required: true %>
+    </p>
+    <p class="input-label">
       <%= f.label 'Desired Date:' %><br />
-      <%= f.datetime_select :desired_date %>
+      <%= f.datetime_field :desired_date_from, value: DateTime.tomorrow.strftime("%Y-%m-%dT%H:%M"), required: true %>
+      <%= f.datetime_field :desired_date_to, value: DateTime.tomorrow.strftime("%Y-%m-%dT%H:%M"), required: true %>
     </p>
     <div class="submit-field">
       <%= f.submit 'Submit', class: 'submit-btn' %>

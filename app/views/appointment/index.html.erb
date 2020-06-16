@@ -9,15 +9,39 @@
   </div>
 </div>
 
-<div class="create-appointment">
+<div class="create-appointment create-appointment-confirm">
   <h2 class="title is-4"><%= 'All Appointments' %></h2>
 
   <table id="appointment-table" class="table sort-data">
-    <% @appointments.each do |event| %>
+    <tr class="table-header">
+      <th><%= 'Name' %></th>
+      <th><%= 'Address' %></th>
+      <th><%= 'Mobile' %></th>
+      <th><%= 'Desired Date' %></th>
+      <th colspan="2" style="text-align: center"><%= 'Confirmed Time' %></th>
+      <th><%= 'Action' %></th>
+    </tr>
+    <% @appointments.each do |appointment| %>
       <tr class="table-bordered">
-        <td class="row-expand"><%= event.first_name %></td>
-        <td class="row-expand"><%= event.last_name %></td>
-        <td class="row-expand"><%= event.desired_date %></td>
+        <td class="row-expand"><%= appointment.first_name + ' ' + appointment.last_name%></td>
+        <td class="row-expand"><%= appointment.address %></td>
+        <td class="row-expand"><%= appointment.mobile %></td>
+        <td class="row-expand"><%= appointment.desired_date_from %></td>
+        <td>
+          <%= form_for appointment, :as => :appointment, url: appointment_path(appointment), :html=>{:method=>:patch} do |f| %>
+            <p class="input-label">
+              <%= f.datetime_field :confirmed_date_from, value: appointment.desired_date_from.strftime("%Y-%m-%dT%H:%M") %>
+            </p>
+          </td>
+          <td>
+            <p class="input-label">
+              <%= f.datetime_field :confirmed_date_to, value: appointment.desired_date_to.strftime("%Y-%m-%dT%H:%M") %>
+            </p>
+          </td>
+          <td>
+            <%= f.submit 'Send', class: 'submit-btn-sms' %>
+          </td>
+          <% end %>
       </tr>
     <% end %>
   </table>
