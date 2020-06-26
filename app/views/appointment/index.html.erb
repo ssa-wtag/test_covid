@@ -9,40 +9,43 @@
   </div>
 </div>
 
+<div class="btn btn-danger">
+  <%= link_to 'Upload Result', upload_result_path %>
+</div>
+
 <div class="create-appointment create-appointment-confirm">
   <h3 class="title is-4"><%= 'All Appointments' %></h3>
 
   <table id="appointment-table" class="table sort-data">
-    <tr class="table-header">
-      <th><%= 'Name' %></th>
-      <th><%= 'Address' %></th>
-      <th><%= 'Mobile' %></th>
-      <th><%= 'Desired Date' %></th>
-      <th colspan="2" style="text-align: center"><%= 'Confirmed Time' %></th>
-      <th><%= 'Action' %></th>
-    </tr>
-    <% @appointments.each do |appointment| %>
-      <tr class="table-bordered">
-        <td class="row-expand"><%= appointment.first_name + ' ' + appointment.last_name%></td>
-        <td class="row-expand"><%= appointment.address %></td>
-        <td class="row-expand"><%= appointment.mobile %></td>
-        <td class="row-expand"><%= appointment.desired_date_from %></td>
-        <td>
-          <%= form_for appointment, :as => :appointment, url: appointment_path(appointment), :html=>{:method=>:patch} do |f| %>
-            <p class="input-label">
-              <%= f.datetime_field :confirmed_date_from, value: appointment.desired_date_from.strftime("%Y-%m-%dT%H:%M") %>
-            </p>
-          </td>
-          <td>
-            <p class="input-label">
-              <%= f.datetime_field :confirmed_date_to, value: appointment.desired_date_to.strftime("%Y-%m-%dT%H:%M") %>
-            </p>
-          </td>
-          <td>
-            <%= f.submit 'Send', class: 'submit-btn-sms' %>
-          </td>
-          <% end %>
+    <thead>
+      <tr class="table-header">
+        <th><%= 'Name' %></th>
+        <th><%= 'Address' %></th>
+        <th><%= 'Mobile' %></th>
+        <th><%= 'Desired Date' %></th>
+        <th><%= 'Confirmed Time' %></th>
+        <th><%= 'Action' %></th>
       </tr>
-    <% end %>
+    </thead>
+    <tbody>
+      <% @appointments.each do |appointment| %>
+        <tr class="table-bordered">
+          <td class="row-expand"><%= appointment.name %></td>
+          <td class="row-expand"><%= appointment.address %></td>
+          <td class="row-expand"><%= appointment.mobile %></td>
+          <td class="row-expand"><%= appointment.desired_date %></td>
+          <td>
+            <%= form_for appointment, :as => :appointment, url: appointment_path(appointment), :html=>{:method=>:patch} do |f| %>
+              <p class="input-label">
+                <%= f.date_field :confirmed_date, value: appointment.desired_date.strftime("%Y-%m-%d") %>
+              </p>
+              </td>
+              <td>
+                <%= f.submit 'Send', class: 'submit-btn-sms' %>
+              </td>
+            <% end %>
+            </tr>
+      <% end %>
+    </tbody>
   </table>
 </div>

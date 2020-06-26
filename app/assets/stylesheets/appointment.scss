@@ -17,6 +17,13 @@ html {
   padding: 16px;
 }
 
+.appointment-table-show {
+  background-color: white;
+  height: 10%;
+  width: 70%;
+  margin: 10% 15%;
+}
+
 .create-appointment-log-in {
   height: 70%;
 }
@@ -51,6 +58,18 @@ input[type=text], input[type=datetime_select] {
 }
 
 .submit-btn-sms {
+  display: inline;
+  margin-left: 0px;
+  height: 35px;
+  width: 90%;
+}
+
+.pdf-download {
+  margin-left: 15%;
+  margin-top: -5%;
+}
+
+.upload-result-file {
   display: inline;
   margin-left: 0px;
   height: 35px;

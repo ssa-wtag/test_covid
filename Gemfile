@@ -22,7 +22,9 @@ gem 'jbuilder'
 gem 'sdoc'
 
 gem 'pg', '~> 0.20'
-
+gem 'jquery-datatables-rails'
+gem 'prawn'
+gem 'prawn-table'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 

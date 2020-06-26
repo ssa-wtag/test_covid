@@ -1,0 +1,51 @@
+<h3>Create Appointment</h3>
+<p>Please fill in this form to create an appointment.</p>
+<%= form_for appointment, :as => :appointment, remote: true, :url => appointment_index_path(@user) do |f| %>
+  <div class="first-name-appointment">
+    <p class="input-label">
+      <%= f.label 'Name:' %><br/>
+      <%= f.text_field :name, required: true %>
+    </p>
+  </div>
+  <p class="input-label">
+    <%= f.label 'Mobile:' %><br />
+    <%= f.text_field :mobile, required: true %>
+  </p>
+  <p class="input-label">
+    <%= f.label 'Email:' %><br />
+    <%= f.text_field :email, required: true %>
+  </p>
+  <p class="input-label">
+    <%= f.label 'Address:' %><br />
+    <%= f.text_field :address, required: true %>
+  </p>
+  <p class="input-label", id="appointment_date">
+    <%= f.label 'Desired Date:' %><br />
+    <%= f.date_field :desired_date, value: DateTime.tomorrow.strftime("%Y-%m-%d"), min: Date.tomorrow, required: true, class: 'appointment_date_field' %>
+  </p>
+  <% if date.nil? %>
+    <p class="input-label">
+      <%= f.label 'Slot' %><br />
+      <div class="nine_ten_class">
+        <%= f.radio_button :slot_id, 'nine_ten', required: true %>
+        <%= f.label :slot_id, '9 AM - 10 AM' %></br>
+      </div>
+    <div class="ten_eleven_class">
+      <%= f.radio_button :slot_id, 'ten_eleven', required: true %>
+      <%= f.label :slot_id, '10 AM - 11 AM' %></br>
+    </div>
+    <div class="eleven_twelve_class">
+      <%= f.radio_button :slot_id, 'eleven_twelve' %>
+      <%= f.label :slot_id, '11 AM - 12 PM' %></br>
+    </div>
+    <div class="twelve_one_class">
+      <%= f.radio_button :slot_id, 'twelve_one' %>
+      <%= f.label :slot_id, '12 PM - 01 PM' %>
+    </div>
+    </p>
+  <% end %>
+  <div class="submit-field">
+    <%= f.submit 'Submit', class: 'submit-btn' %>
+    <%= f.submit 'Clear Fields', :type => 'reset', class: 'reset-btn' %>
+  </div>
+<% end %>

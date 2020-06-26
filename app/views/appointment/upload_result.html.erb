@@ -1,0 +1,52 @@
+<div class="dashboard">
+  <% flash.each do |key, value| %>
+    <div class="alert">
+      <%= value %>
+    </div>
+  <% end %>
+  <div id="flash-box">
+    <div></div>
+  </div>
+</div>
+
+<div class="btn btn-danger">
+  <%= link_to 'Back', appointment_index_path %>
+</div>
+
+<div class="create-appointment create-appointment-confirm">
+  <h3 class="title is-4"><%= 'All Appointments' %></h3>
+
+  <table id="appointment-table" class="table sort-data">
+    <thead>
+    <tr class="table-header">
+      <th><%= 'Name' %></th>
+      <th><%= 'Address' %></th>
+      <th><%= 'Mobile' %></th>
+      <th><%= 'Upload Result File' %></th>
+      <th><%= 'Action' %></th>
+    </tr>
+    </thead>
+    <tbody>
+    <% @appointments.each do |appointment| %>
+      <tr class="table-bordered">
+        <td class="row-expand"><%= appointment.name%></td>
+        <td class="row-expand"><%= appointment.address %></td>
+        <td class="row-expand"><%= appointment.mobile %></td>
+        <td>
+          <%= form_for appointment, :as => :appointment, url: save_result_file_path, :html=>{:method=>:put} do |f| %>
+            <p class="input-label">
+              <%= f.hidden_field :id, value: appointment.id %>
+            </p>
+            <p class="input-label">
+              <%= f.file_field :result %>
+            </p>
+            </td>
+            <td>
+              <%= f.submit 'Upload', class: 'upload-result-file' %>
+            </td>
+          <% end %>
+          </tr>
+    <% end %>
+    </tbody>
+  </table>
+</div>

@@ -9,38 +9,6 @@
   </div>
 </div>
 
-<div class="create-appointment">
-  <h3>Create Appointment</h3>
-  <p>Please fill in this form to create an appointment.</p>
-  <%= form_for @appointment, :as => :appointment, :url => appointment_index_path(@user) do |f| %>
-    <div class="first-name-appointment">
-      <p class="input-label">
-        <%= f.label 'Fist Name:' %><br/>
-        <%= f.text_field :first_name, required: true %>
-      </p>
-    </div>
-    <div class="last-name-appointment">
-      <p class="input-label">
-        <%= f.label 'last Name:' %><br />
-        <%= f.text_field :last_name %>
-      </p>
-    </div>
-    <p class="input-label">
-      <%= f.label 'Mobile:' %><br />
-      <%= f.text_field :mobile, required: true %>
-    </p>
-    <p class="input-label">
-      <%= f.label 'Address:' %><br />
-      <%= f.text_field :address, required: true %>
-    </p>
-    <p class="input-label">
-      <%= f.label 'Desired Date:' %><br />
-      <%= f.datetime_field :desired_date_from, value: DateTime.tomorrow.strftime("%Y-%m-%dT%H:%M"), required: true %>
-      <%= f.datetime_field :desired_date_to, value: DateTime.tomorrow.strftime("%Y-%m-%dT%H:%M"), required: true %>
-    </p>
-    <div class="submit-field">
-      <%= f.submit 'Submit', class: 'submit-btn' %>
-      <%= f.submit 'Clear Fields', :type => 'reset', class: 'reset-btn' %>
-    </div>
-  <% end %>
+<div class="create-appointment" data-turbolinks='false'>
+  <%= render 'form', appointment: @appointment, date: @date %>
 </div>

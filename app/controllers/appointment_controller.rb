@@ -11,46 +11,88 @@ class AppointmentController < ApplicationController
   end
 
   def create
-    appointment = Appointment.new(appointment_params)
-    if appointment.save
-      flash[:notice] = "Appointment for #{appointment.first_name} on #{appointment.desired_date_from.to_date} created successfully"
-      redirect_to new_appointment_path
+    serial = ('1' + DateTime.now.strftime("%m%d%H%M%S")).split('').shuffle.join
+    attributes = appointment_params.to_h.merge!(serial: serial)
+    @appointment = Appointment.new(attributes)
+    if @appointment.save
+      flash[:notice] = "Appointment for #{@appointment.name} on #{@appointment.desired_date} created successfully"
+      redirect_to generate_pdf_path(appointment: @appointment)
     else
       render :new
     end
   end
 
+  def generate_pdf
+    @appointment = Appointment.find(params[:appointment])
+  end
+
+  def download_pdf
+    appointment = Appointment.find(params[:appointment])
+    respond_to do |format|
+      format.pdf do
+        pdf = AppointmentPdfMaker.new(appointment.id)
+        send_data pdf.render, file_name: "#{appointment.name}'s Appointment Slip.pdf",
+                              type: 'application/pdf',
+                              disposition: 'inline'
+
+      end
+    end
+  end
+
   def update
     appointment = Appointment.find(params[:id])
-    appointment.confirmed_date_from = appointment_params[:confirmed_date_from].to_datetime
-    appointment.confirmed_date_to = appointment_params[:confirmed_date_to].to_datetime
+    appointment.confirmed_date = appointment_params[:confirmed_date].to_date
     appointment.sent_sms = true
     appointment.save
     if SmsSender.call(params[:id])
       appointment.save
-      flash[:notice] = "Message Sent for #{appointment.first_name} on #{appointment.confirmed_date_from}"
+      flash[:notice] = "Message Sent for #{appointment.name} on #{appointment.confirmed_date}"
     end
 
     redirect_to appointment_index_path
   end
 
   def new
+    @date = params['desired_appointment_date']
+    slot_status = @date.present? ? appointment_slot_status(@date) : {}
     @appointment = Appointment.new
+    respond_to do |format|
+      format.html
+      format.json { render json: { date: @date, slot_status: slot_status }.to_json }
+    end
   end
 
   def destroy
   end
 
+  def upload_result
+    @appointments = Appointment.where(sent_sms: true)
+  end
+
+  def save_result_file
+    flash[:notice] = 'Result Successfully Uploaded'
+  end
+
   private
 
   def appointment_params
-    params.require(:appointment).permit(:first_name,
-                                        :last_name,
+    params.require(:appointment).permit(:name,
+                                        :email,
                                         :mobile,
                                         :address,
-                                        :desired_date_from,
-                                        :desired_date_to,
-                                        :confirmed_date_from,
-                                        :confirmed_date_to)
+                                        :desired_date,
+                                        :slot_id,
+                                        :confirmed_date,
+                                        :confirmed_date,
+                                        :result)
+  end
+
+  def appointment_slot_status(date)
+    {
+      nine_ten: Appointment.nine_ten_available?(date),
+      ten_eleven: Appointment.ten_eleven_available?(date),
+      eleven_twelve: Appointment.eleven_twelve_available?(date),
+      twelve_one: Appointment.twelve_one_available?(date),
+    }
   end
 end
