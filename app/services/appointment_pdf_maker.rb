@@ -8,7 +8,7 @@ class AppointmentPdfMaker < Prawn::Document
 
   def appointment_slip
     move_down 20
-    table [['Name', 'Mobile', 'Address', 'Date', 'Time']] +
+    table [['Name', 'Mobile', 'Address', 'Desired Date', 'Time']] +
             [[@appointment.name, @appointment.mobile, @appointment.address, @appointment.desired_date, slot_time(@appointment.slot_id)]]
   end
 

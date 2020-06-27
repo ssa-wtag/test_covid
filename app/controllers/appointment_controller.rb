@@ -32,9 +32,7 @@ class AppointmentController < ApplicationController
       format.pdf do
         pdf = AppointmentPdfMaker.new(appointment.id)
         send_data pdf.render, file_name: "#{appointment.name}'s Appointment Slip.pdf",
-                              type: 'application/pdf',
-                              disposition: 'inline'
-
+                              type: 'application/pdf'
       end
     end
   end
