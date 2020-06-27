@@ -1,3 +1,5 @@
+<script type="text/javascript" src="/javascripts/lib/upload_result_datatable.js"></script>
+
 <div class="dashboard">
   <% flash.each do |key, value| %>
     <div class="alert">
@@ -16,19 +18,21 @@
 <div class="create-appointment create-appointment-confirm">
   <h3 class="title is-4"><%= 'All Appointments' %></h3>
 
-  <table id="appointment-table" class="table sort-data">
+  <table id="upload-result-table" class="table sort-data">
     <thead>
-    <tr class="table-header">
-      <th><%= 'Name' %></th>
-      <th><%= 'Address' %></th>
-      <th><%= 'Mobile' %></th>
-      <th><%= 'Upload Result File' %></th>
-      <th><%= 'Action' %></th>
-    </tr>
+      <tr class="table-header">
+        <th><%= 'Serial' %></th>
+        <th><%= 'Name' %></th>
+        <th><%= 'Address' %></th>
+        <th><%= 'Mobile' %></th>
+        <th><%= 'Upload Result File' %></th>
+        <th><%= 'Action' %></th>
+      </tr>
     </thead>
     <tbody>
     <% @appointments.each do |appointment| %>
       <tr class="table-bordered">
+        <td class="row-expand"><%= appointment.serial%></td>
         <td class="row-expand"><%= appointment.name%></td>
         <td class="row-expand"><%= appointment.address %></td>
         <td class="row-expand"><%= appointment.mobile %></td>
