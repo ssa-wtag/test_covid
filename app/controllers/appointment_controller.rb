@@ -15,7 +15,6 @@ class AppointmentController < ApplicationController
     attributes = appointment_params.to_h.merge!(serial: serial)
     @appointment = Appointment.new(attributes)
     if @appointment.save
-      flash[:notice] = "Appointment for #{@appointment.name} on #{@appointment.desired_date} created successfully"
       redirect_to generate_pdf_path(appointment: @appointment)
     else
       render :new
