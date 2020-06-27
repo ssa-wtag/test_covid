@@ -67,7 +67,8 @@ class AppointmentController < ApplicationController
   end
 
   def save_result_file
-    flash[:notice] = 'Result Successfully Uploaded'
+    flash[:notice] = 'Test Result Successfully Uploaded'
+    redirect_to upload_result_path
   end
 
   private
