@@ -2,24 +2,25 @@
   <h4>Create Appointment</h4>
   <p>Please fill in this form to create an appointment.</p>
   <%= form_for appointment, :as => :appointment, remote: true, :url => appointment_index_path(@user) do |f| %>
-    <div class="first-name-appointment">
+    <div class="input-text">
       <p class="input-label">
         <%= f.label 'Name:' %><br/>
         <%= f.text_field :name, required: true %>
       </p>
+
+      <p class="input-label">
+        <%= f.label 'Mobile:' %><br />
+        <%= f.text_field :mobile, required: true %>
+      </p>
+      <p class="input-label">
+        <%= f.label 'Email:' %><br />
+        <%= f.text_field :email, required: true %>
+      </p>
+      <p class="input-label">
+        <%= f.label 'Address:' %><br />
+        <%= f.text_field :address, required: true %>
+      </p>
     </div>
-    <p class="input-label">
-      <%= f.label 'Mobile:' %><br />
-      <%= f.text_field :mobile, required: true %>
-    </p>
-    <p class="input-label">
-      <%= f.label 'Email:' %><br />
-      <%= f.text_field :email, required: true %>
-    </p>
-    <p class="input-label">
-      <%= f.label 'Address:' %><br />
-      <%= f.text_field :address, required: true %>
-    </p>
     <p class="input-label" id="appointment_date">
       <%= f.label 'Desired Date:' %><br />
       <%= f.date_field :desired_date, value: DateTime.tomorrow.strftime("%Y-%m-%d"), min: Date.tomorrow, required: true, class: 'appointment_date_field' %>
