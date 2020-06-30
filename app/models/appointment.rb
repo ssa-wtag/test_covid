@@ -1,4 +1,6 @@
 class Appointment < ApplicationRecord
+  attr_accessor :test_result
+
   enum slot_id: { nine_ten: 0, ten_eleven: 1, eleven_twelve: 2, twelve_one: 3 }
 
   def self.nine_ten_available?(date)

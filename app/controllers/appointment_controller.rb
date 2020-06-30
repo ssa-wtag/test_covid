@@ -67,6 +67,7 @@ class AppointmentController < ApplicationController
   end
 
   def save_result_file
+    SmsSender.call(params[:appointment][:id], params[:appointment][:test_result])
     flash[:notice] = 'Test Result Successfully Uploaded'
     redirect_to upload_result_path
   end
@@ -82,6 +83,7 @@ class AppointmentController < ApplicationController
                                         :slot_id,
                                         :confirmed_date,
                                         :confirmed_date,
+                                        :test_result,
                                         :result)
   end
 

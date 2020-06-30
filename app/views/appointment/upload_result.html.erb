@@ -26,6 +26,7 @@
         <th><%= 'Address' %></th>
         <th><%= 'Mobile' %></th>
         <th><%= 'Upload Result File' %></th>
+        <th colspan="2"><%= 'Result' %></th>
         <th><%= 'Action' %></th>
       </tr>
     </thead>
@@ -42,14 +43,26 @@
               <%= f.hidden_field :id, value: appointment.id %>
             </p>
             <p class="input-label">
-              <%= f.file_field :result %>
+              <%= f.file_field :result, required: true %>
             </p>
-            </td>
-            <td>
-              <%= f.submit 'Upload', class: 'upload-result-file' %>
-            </td>
-          <% end %>
-          </tr>
+         </td>
+        <td>
+          <p class="input-label">
+            <%= f.radio_button :test_result, 'Positive' %>
+            <%= f.label :test_result, 'positive' %>
+          </p>
+        </td>
+        <td>
+          <p class="input-label">
+            <%= f.radio_button :test_result, 'Negative' %>
+            <%= f.label :test_result, 'negative' %>
+          </p>
+        </td>
+        <td>
+          <%= f.submit 'Upload', class: 'upload-result-file' %>
+        </td>
+      <% end %>
+      </tr>
     <% end %>
     </tbody>
   </table>
