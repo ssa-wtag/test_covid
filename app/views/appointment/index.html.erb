@@ -24,7 +24,7 @@
         <th><%= 'Name' %></th>
         <th><%= 'Address' %></th>
         <th><%= 'Mobile' %></th>
-        <th><%= 'Desired Date' %></th>
+        <th><%= 'Desired Time' %></th>
         <th><%= 'Confirmed Time' %></th>
         <th><%= 'Action' %></th>
       </tr>
@@ -35,7 +35,7 @@
           <td class="row-expand"><%= appointment.name %></td>
           <td class="row-expand"><%= appointment.address %></td>
           <td class="row-expand"><%= appointment.mobile %></td>
-          <td class="row-expand"><%= appointment.desired_date %></td>
+          <td class="row-expand"><%= appointment.desired_date.strftime("%d-%m-%Y") %></td>
           <td>
             <%= form_for appointment, :as => :appointment, url: appointment_path(appointment), :html=>{:method=>:patch} do |f| %>
               <p class="input-label">
