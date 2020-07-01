@@ -21,16 +21,18 @@ html {
   background-color: white;
   height: 10%;
   width: 70%;
-  margin: 10% 15%;
+  margin: 0% 15%;
 }
 
 .create-appointment-log-in {
-  height: 70%;
+  height: 40%;
+  width: 35%;
 }
 
 .create-appointment-confirm {
-  width: 95%;
-  margin: 3% 3%;
+  width: 80%;
+  height: 80%;
+  margin: 3% 10%;
 }
 
 .input-label {
@@ -70,7 +72,6 @@ input[type=text], input[type=datetime_select] {
 
 .pdf-download {
   margin-left: 15%;
-  margin-top: -5%;
 }
 
 .upload-result-file {

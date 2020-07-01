@@ -22,6 +22,7 @@ gem 'jbuilder'
 gem 'sdoc'
 
 gem 'pg', '~> 0.20'
+gem 'compass-rails'
 gem 'jquery-datatables-rails'
 gem 'prawn'
 gem 'prawn-table'
