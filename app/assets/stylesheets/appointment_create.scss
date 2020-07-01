@@ -40,9 +40,9 @@ a {
 .form {
   background:rgba($form-bg,.9);
   padding: 40px;
-  max-width:600px;
-  margin:40px auto;
-  border-radius:$br;
+  max-width: 600px;
+  margin: 0px auto;
+  border-radius: $br;
   box-shadow:0 4px 10px 4px rgba($form-bg,.3);
 }
 
@@ -116,7 +116,7 @@ h1 {
 
 .label-field-title {
   color: White;
-  font-size:22px;
+  font-size:18px;
 }
 
 label.active {
@@ -161,7 +161,7 @@ label.highlight {
 
 .field-wrap {
   position:relative;
-  margin-bottom:40px;
+  margin-bottom:15px;
 }
 
 .top-row {
@@ -202,6 +202,7 @@ label.highlight {
 .button-block {
   display:block;
   width:100%;
+  height: 50px;
 }
 
 .forgot {
@@ -215,4 +216,8 @@ label.highlight {
 
 input, select, textarea{
   color: #1ab188;
+}
+
+.label-field {
+  font-size: 18px;
 }
