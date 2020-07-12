@@ -78,6 +78,8 @@ class AppointmentController < ApplicationController
 
     Thread.new do
       ReportMailer.send_mail(appointment).deliver
+      path_to_file = Rails.root.join('app', 'pdfs', "#{appointment.serial}.pdf")
+      File.delete(path_to_file) if File.exist?(path_to_file)
     end
 
     flash[:notice] = 'Test Result Successfully Uploaded'
