@@ -74,11 +74,11 @@ class AppointmentController < ApplicationController
     appointment.update_attributes(result: true, covid_positive: result)
     appointment.save
     report = TestResultMaker.new(appointment_id)
-    report.render_file File.join(Rails.root, "pdfs", "#{appointment.serial}.pdf")
+    report.render_file File.join(Rails.root, "app/pdfs", "#{appointment.serial}.pdf")
 
     Thread.new do
       ReportMailer.send_mail(appointment).deliver
-      path_to_file = Rails.root.join('pdfs', "#{appointment.serial}.pdf")
+      path_to_file = Rails.root.join('app', 'pdfs', "#{appointment.serial}.pdf")
       File.delete(path_to_file) if File.exist?(path_to_file)
     end
 
