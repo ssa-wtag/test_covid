@@ -1,4 +1,4 @@
-
+<script type="text/javascript" src="/javascripts/lib/appointment_enhanced.js"></script>
 <div>
   <div class="form">
 
@@ -8,33 +8,72 @@
 
         <%= form_for appointment, :as => :appointment, remote: true, :url => appointment_index_path(@user) do |f| %>
 
+
+          <div class="field-wrap">
+            <%= f.text_field :name, required: true, placeholder: "Name / নাম" %>
+          </div>
+
           <div class="top-row">
             <div class="field-wrap">
-              <%= f.text_field :name, required: true, placeholder: "Name" %>
+              <%= f.text_field :gender, required: true, placeholder: "Gender / লিঙ্গ" %>
             </div>
 
             <div class="field-wrap">
-              <%= f.text_field :mobile, required: true, placeholder: "Mobile" %>
+              <%= f.text_field :age, required: true, placeholder: "Age / বয়স" %>
+            </div>
+          </div>
+
+          <div class="top-row">
+            <div class="field-wrap">
+              <%= f.text_field :mobile, required: true, placeholder: "Mobile / মোবাইল" %>
+            </div>
+
+            <div class="field-wrap">
+              <%= f.text_field :email, required: true, placeholder: "E-Mail / ইমেইল" %>
             </div>
           </div>
 
           <div class="field-wrap">
-            <%= f.text_field :email, required: true, placeholder: "Email Address" %>
+            <%= f.text_field :address, required: true, placeholder: "Postal Address / বাসার ঠিকানা" %>
           </div>
 
-          <div class="field-wrap">
-            <%= f.text_field :address, required: true, placeholder: "Address" %>
+          <div class="top-row">
+            <div class="field-wrap">
+              <%= f.text_field :district, required: true, placeholder: "District / জেলা" %>
+            </div>
+
+            <div class="field-wrap">
+              <%= f.text_field :upazila, required: true, placeholder: "Upazila / উপজেলা" %>
+            </div>
           </div>
 
           <div class="field-wrap">
             <%= f.date_field :desired_date, value: DateTime.tomorrow.strftime("%Y-%m-%d"), min: Date.tomorrow, required: true, class: 'appointment_date_field' %>
           </div>
 
+          <div class="plasma-consent-question">
+            <div class="field-wrap">
+              <div class="label-field-title">
+                <%= f.label 'Tested Before? / আগে টেস্ট করেছেন?' %>
+                <%= f.check_box :second_time, { checked: false } %> <br/>
+              </div>
+            </div>
+          </div>
+
+          <div id="plasma-consent">
+            <div class="field-wrap">
+              <div class="label-field-title">
+                <%= f.label 'Want to Donate Plasma? / প্লাজমা দিতে চান?' %>
+                <%= f.check_box :willing_to_plasma_donation, { checked: false } %> <br/>
+              </div>
+            </div>
+          </div>
+
           <div class="field-wrap">
 
             <p class="input-label">
               <div class="label-field-title">
-                <%= f.label 'Slot' %><br/>
+                <%= f.label 'Slot / কোন সময়ে আসতে চান' %><br/>
               </div>
              <div class="radio-input">
               <div class="nine_ten_class">

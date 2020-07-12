@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20200626124302) do
+ActiveRecord::Schema.define(version: 20200711103638) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -19,15 +19,22 @@ ActiveRecord::Schema.define(version: 20200626124302) do
     t.string   "name"
     t.string   "mobile"
     t.date     "desired_date"
-    t.datetime "created_at",                     null: false
-    t.datetime "updated_at",                     null: false
-    t.boolean  "sent_sms",       default: false
+    t.datetime "created_at",                                 null: false
+    t.datetime "updated_at",                                 null: false
+    t.boolean  "sent_sms",                   default: false
     t.date     "confirmed_date"
     t.string   "address"
     t.integer  "slot_id"
     t.string   "email"
-    t.binary   "result"
     t.string   "serial"
+    t.boolean  "result",                     default: false
+    t.boolean  "covid_positive"
+    t.string   "district"
+    t.string   "upazila"
+    t.boolean  "second_time"
+    t.boolean  "willing_to_plasma_donation"
+    t.string   "gender"
+    t.string   "age"
   end
 
   create_table "users", force: :cascade do |t|

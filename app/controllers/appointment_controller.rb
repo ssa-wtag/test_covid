@@ -63,11 +63,23 @@ class AppointmentController < ApplicationController
   end
 
   def upload_result
-    @appointments = Appointment.where(sent_sms: true)
+    @appointments = Appointment.where(sent_sms: true).where.not(result: true)
   end
 
   def save_result_file
-    SmsSender.call(params[:appointment][:id], params[:appointment][:test_result])
+    appointment_id = params[:appointment][:id]
+    SmsSender.call(appointment_id, params[:appointment][:test_result])
+    result = params[:appointment][:test_result] == 'Positive' ? true : false
+    appointment = Appointment.find(appointment_id)
+    appointment.update_attributes(result: true, covid_positive: result)
+    appointment.save
+    report = TestResultMaker.new(appointment_id)
+    report.render_file File.join(Rails.root, "app/pdfs", "#{appointment.serial}.pdf")
+
+    Thread.new do
+      ReportMailer.send_mail(appointment).deliver
+    end
+
     flash[:notice] = 'Test Result Successfully Uploaded'
     redirect_to upload_result_path
   end
@@ -76,6 +88,8 @@ class AppointmentController < ApplicationController
 
   def appointment_params
     params.require(:appointment).permit(:name,
+                                        :gender,
+                                        :age,
                                         :email,
                                         :mobile,
                                         :address,
@@ -84,7 +98,11 @@ class AppointmentController < ApplicationController
                                         :confirmed_date,
                                         :confirmed_date,
                                         :test_result,
-                                        :result)
+                                        :result,
+                                        :district,
+                                        :upazila,
+                                        :second_time,
+                                        :willing_to_plasma_donation)
   end
 
   def appointment_slot_status(date)

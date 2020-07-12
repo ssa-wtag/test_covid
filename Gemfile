@@ -20,7 +20,7 @@ gem 'turbolinks'
 gem 'jbuilder'
 # bundle exec rake doc:rails generates the API under doc/api.
 gem 'sdoc'
-
+gem 'postmark-rails'
 gem 'pg', '~> 0.20'
 gem 'compass-rails'
 gem 'jquery-datatables-rails'

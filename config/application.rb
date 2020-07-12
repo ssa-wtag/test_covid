@@ -9,6 +9,19 @@ Bundler.require(*Rails.groups)
 module CcobCivility
   class Application < Rails::Application
     config.time_zone = 'Dhaka'
+    # config.action_mailer.delivery_method = :postmark
+    # config.action_mailer.postmark_settings = { :api_token => Rails.application.secrets.postmark_api_token }
+    config.action_mailer.delivery_method = :smtp
+    config.action_mailer.smtp_settings = {
+      address: 'smtp.gmail.com',
+      port: 587,
+      domain: 'noreply.com',
+      authentication: 'plain',
+      enable_starttls_auto: true,
+      user_name: 'subratoskr@gmail.com',
+      password: 'new.password'
+    }
+    config.action_mailer.default_url_options = { host: 'noreply.com' }
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded.
