@@ -68,7 +68,7 @@ class AppointmentController < ApplicationController
 
   def save_result_file
     appointment_id = params[:appointment][:id]
-    SmsSender.call(appointment_id, params[:appointment][:test_result])
+    # SmsSender.call(appointment_id, params[:appointment][:test_result])
     result = params[:appointment][:test_result] == 'Positive' ? true : false
     appointment = Appointment.find(appointment_id)
     appointment.update_attributes(result: true, covid_positive: result)
