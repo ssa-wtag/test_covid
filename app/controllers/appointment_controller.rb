@@ -75,12 +75,12 @@ class AppointmentController < ApplicationController
     appointment.save
     report = TestResultMaker.new(appointment_id)
     report.render_file File.join(Rails.root, "tmp", "test.pdf")
-
-    Thread.new do
-      ReportMailer.send_mail(appointment).deliver
-      # path_to_file = Rails.root.join('app', 'pdfs', "#{appointment.serial}.pdf")
-      # File.delete(path_to_file) if File.exist?(path_to_file)
-    end
+    ReportMailer.send_mail(appointment).deliver
+    # Thread.new do
+    #   ReportMailer.send_mail(appointment).deliver
+    #   # path_to_file = Rails.root.join('app', 'pdfs', "#{appointment.serial}.pdf")
+    #   # File.delete(path_to_file) if File.exist?(path_to_file)
+    # end
 
     flash[:notice] = 'Test Result Successfully Uploaded'
     redirect_to upload_result_path
