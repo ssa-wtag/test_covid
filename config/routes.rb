@@ -10,4 +10,5 @@ Rails.application.routes.draw do
   get '/upload_result', to: 'appointment#upload_result'
   get '/generate_pdf', to: 'appointment#generate_pdf'
   get '/download_pdf', to: 'appointment#download_pdf'
+  get '/plasma_donors', to: 'appointment#plasma_donors'
 end

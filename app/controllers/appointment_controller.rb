@@ -63,7 +63,7 @@ class AppointmentController < ApplicationController
   end
 
   def upload_result
-    @appointments = Appointment.where(sent_sms: true)#.where.not(result: true)
+    @appointments = Appointment.where(sent_sms: true, result: false)
   end
 
   def save_result_file
@@ -84,6 +84,10 @@ class AppointmentController < ApplicationController
 
     flash[:notice] = 'Test Result Successfully Uploaded'
     redirect_to upload_result_path
+  end
+
+  def plasma_donors
+    @plasma_donors = Appointment.where(result: true, second_time: true, covid_positive: false, willing_to_plasma_donation: true)
   end
 
   private
