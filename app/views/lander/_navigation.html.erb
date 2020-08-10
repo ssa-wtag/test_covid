@@ -1,0 +1,177 @@
+<nav class="navbar navbar-default navbar-fixed-top topnav" role="navigation">
+  <div class="container topnav">
+    <div id="bs-example-navbar-collapse-1" class="collapse navbar-collapse">
+      <ul class="nav navbar-nav navbar-right">
+        <li> <%= link_to 'Create Appointment', '#', data: { toggle: 'modal', target: '#myModal' } %> </li>
+        <li> <%= link_to 'Log In', new_user_path %> </li>
+        <li> <%= link_to 'Contact', '#contact' %> </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<div class="modal fade" id="myModal" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Create Appointment</h4>
+      </div>
+      <div>
+        <div class="form">
+
+          <div class="tab-content">
+            <div id="signup">
+              <%= form_for Appointment.new, :as => :appointment, remote: true, :url => appointment_index_path(@user) do |f| %>
+
+                <div class="field-wrap">
+                  <%= f.text_field :name, required: true, placeholder: "Name / নাম" %>
+                </div>
+
+                <div class="top-row">
+                  <div class="field-wrap">
+                    <%= f.text_field :gender, required: true, placeholder: "Gender / লিঙ্গ" %>
+                  </div>
+
+                  <div class="field-wrap">
+                    <%= f.text_field :age, required: true, placeholder: "Age / বয়স" %>
+                  </div>
+                </div>
+
+                <div class="top-row">
+                  <div class="field-wrap">
+                    <%= f.text_field :mobile, required: true, placeholder: "Mobile / মোবাইল" %>
+                  </div>
+
+                  <div class="field-wrap">
+                    <%= f.text_field :email, required: true, placeholder: "E-Mail / ইমেইল" %>
+                  </div>
+                </div>
+
+                <div class="field-wrap">
+                  <%= f.text_field :address, required: true, placeholder: "Postal Address / বাসার ঠিকানা" %>
+                </div>
+
+                <div class="top-row">
+                  <div class="field-wrap">
+                    <%= f.text_field :district, required: true, placeholder: "District / জেলা" %>
+                  </div>
+
+                  <div class="field-wrap">
+                    <%= f.text_field :upazila, required: true, placeholder: "Upazila / উপজেলা" %>
+                  </div>
+                </div>
+
+                <div class="field-wrap">
+                  <%= f.date_field :desired_date, value: DateTime.tomorrow.strftime("%Y-%m-%d"), min: Date.tomorrow, required: true, class: 'appointment_date_field' %>
+                </div>
+
+                <div class="plasma-consent-question">
+                  <div class="field-wrap">
+                    <div class="label-field-title">
+                      <%= f.label 'Tested Before? / আগে টেস্ট করেছেন?' %>
+                      <%= f.check_box :second_time, { checked: false } %> <br/>
+                    </div>
+                  </div>
+                </div>
+
+                <div id="plasma-consent">
+                  <div class="field-wrap">
+                    <div class="label-field-title">
+                      <%= f.label 'Want to Donate Plasma? / প্লাজমা দিতে চান?' %>
+                      <%= f.check_box :willing_to_plasma_donation, { checked: false } %> <br/>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="field-wrap">
+
+                  <p class="input-label">
+                  <div class="label-field-title">
+                    <%= f.label 'Slot / কোন সময়ে আসতে চান' %><br/>
+                  </div>
+                  <div class="radio-input">
+                    <div class="nine_ten_class">
+                      <div class="nine-ten-text">
+                        <div class="label-field">
+                          <%= f.label :slot_id, '9 AM - 10 AM' %>
+                        </div>
+                      </div>
+                      <%= f.radio_button :slot_id, 'nine_ten', required: true %> <br/>
+
+                    </div>
+                    <div class="ten_eleven_class">
+                      <div class="nine-ten-text">
+                        <div class="label-field">
+                          <%= f.label :slot_id, '10 AM - 11 AM' %>
+                        </div>
+                      </div>
+                      <%= f.radio_button :slot_id, 'ten_eleven', required: true %><br/>
+
+                    </div>
+                    <div class="eleven_twelve_class">
+                      <div class="nine-ten-text">
+                        <div class="label-field">
+                          <%= f.label :slot_id, '11 AM - 12 PM' %>
+                        </div>
+                      </div>
+                      <%= f.radio_button :slot_id, 'eleven_twelve' %><br/>
+
+                    </div>
+                    <div class="twelve_one_class">
+                      <div class="nine-ten-text">
+                        <div class="label-field">
+                          <%= f.label :slot_id, '12 PM - 01 PM' %>
+                        </div>
+                      </div>
+                      <%= f.radio_button :slot_id, 'twelve_one' %>
+
+                    </div>
+                  </div>
+                  </p>
+
+                </div>
+
+                <button type="submit" class="button button-block"/>Create Appointment</button>
+
+              <% end %>
+
+            </div>
+
+            <div id="login">
+              <h1>Welcome Back!</h1>
+
+              <form action="/" method="post">
+
+                <div class="field-wrap">
+                  <label>
+                    Email Address<span class="req">*</span>
+                  </label>
+                  <input type="email"required autocomplete="off"/>
+                </div>
+
+                <div class="field-wrap">
+                  <label>
+                    Password<span class="req">*</span>
+                  </label>
+                  <input type="password"required autocomplete="off"/>
+                </div>
+
+                <p class="forgot"><a href="#">Forgot Password?</a></p>
+
+                <button class="button button-block"/>Log In</button>
+
+              </form>
+
+            </div>
+
+          </div><!-- tab-content -->
+
+        </div> <!-- /form -->
+      </div>
+    </div>
+
+  </div>
+</div>
