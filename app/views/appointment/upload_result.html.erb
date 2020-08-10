@@ -54,6 +54,9 @@
         </td>
         <td>
           <p class="input-label">
+            <%= f.hidden_field :id, value: appointment.id %>
+          </p>
+          <p class="input-label">
             <%= f.radio_button :test_result, 'Negative' %>
             <%= f.label :test_result, 'negative' %>
           </p>
