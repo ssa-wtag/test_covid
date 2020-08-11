@@ -91,12 +91,16 @@ h1 {
 }
 
 .main-header-color {
-  color: green;
+  color: black;
+  line-height: 1.2;
+  //color: green;
 }
 
 .secondary-header-color {
-  display: inline-block;
-  background-color: dodgerblue;
+  //display: inline-block;
+  color: black;
+  line-height: 1.2;
+  //background-color: dodgerblue;
 }
 
 .label-field {
@@ -224,4 +228,14 @@ input, select, textarea{
 
 #plasma-consent {
   display: none;
+}
+
+.h3 {
+  font-weight: normal;
+}
+
+.show-stat {
+  text-align: center;
+  color: green;
+  font-size: 30px;
 }

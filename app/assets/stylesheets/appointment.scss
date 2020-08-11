@@ -9,6 +9,10 @@ html {
 }
 * {box-sizing: border-box}
 
+.bodyPadding {
+  margin: 0px 36px 0px 36px;
+}
+
 .create-appointment {
   background-color: white;
   height: 140%;
@@ -95,4 +99,9 @@ th[colspan="2"] {
 .back {
   font-size: 1.5rem;
   background-color: black;
+}
+
+input[type='checkbox'] {
+  width: 30px;
+  height: 20px;
 }

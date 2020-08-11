@@ -4,115 +4,25 @@
     .row
       .col-lg-12
         .intro-message
-          %h1.main-header-color
-            Make Appointment and See result of Covid-19
-          %h3.secondary-header-color
-            An Initiative of Department of ICT, People's Republic of Bangladesh
+          %h2.main-header-color
+            বিশেষ নির্দেশনাঃ
+          %h4.secondary-header-color
+            * সংক্রামক ব্যাধি হাসপাতাল কর্তৃক করোনা টেস্ট করার জন্যে এপয়েন্টমেন্ট তৈরি (Create Appointment) করুন।
+          %h4.secondary-header-color
+            * প্রয়োজনীয় তথ্য পূরণ পূরণ করে সাবমিট করার পর আপনাকে একটি সিরিয়াল নাম্বার সহ রিসিট দেয়া হবে এবং সংশ্লিষ্ট মোবাইলে সিরিয়াল নাম্বার সহ এসএমএস যাবে।
+          %h4.secondary-header-color
+            * করোনার স্যাম্পল জমা দেবার পর আপনার রিপোর্টটি তৈরি হয়ে গেলে রিপোর্ট এর ফলাফল মোবাইলে এসএমএস করে জানিয়ে দেয়া হবে এবং রিপোর্ট এর সার্টিফিকেট সংশ্লিষ্ট ইমেইলে চলে যাবে।
+          %h4.secondary-header-color
+            * প্লাজমা ডোনার লিস্ট দরকার হলে হসপিটাল কর্তৃপক্ষের সাথে যোগাযোগ করতে পারেন।
+
           %hr.intro-divider
           .stat-link
-            %ul.list-inline.intro-social-buttons
+            %ul.show-stat
               %li
-                = link_to '#', data: { toggle: 'modal', target: '#myModal' }, class: 'btn btn-default btn-lg' do
-                  %span.network-name
-                    Make Appointment
-                %li
-                  = link_to new_user_path, class: 'btn btn-default btn-lg' do
-                    %span.network-name
-                      All Appointments
-
-
-#myModal.modal.fade{:role => "dialog"}
-  .modal-dialog
-    / Modal content
-    .modal-content
-      .modal-header
-        %button.close{"data-dismiss" => "modal", :type => "button"} ×
-        %h4.modal-title Create Appointment
-      %div
-        .form
-          .tab-content
-            #signup
-              = form_for Appointment.new, :as => :appointment, remote: true, :url => appointment_index_path(@user) do |f|
-                .field-wrap
-                  = f.text_field :name, required: true, placeholder: "Name / নাম"
-                .top-row
-                  .field-wrap
-                    = f.text_field :gender, required: true, placeholder: "Gender / লিঙ্গ"
-                  .field-wrap
-                    = f.text_field :age, required: true, placeholder: "Age / বয়স"
-                .top-row
-                  .field-wrap
-                    = f.text_field :mobile, required: true, placeholder: "Mobile / মোবাইল"
-                  .field-wrap
-                    = f.text_field :email, required: true, placeholder: "E-Mail / ইমেইল"
-                .field-wrap
-                  = f.text_field :address, required: true, placeholder: "Postal Address / বাসার ঠিকানা"
-                .top-row
-                  .field-wrap
-                    = f.text_field :district, required: true, placeholder: "District / জেলা"
-                  .field-wrap
-                    = f.text_field :upazila, required: true, placeholder: "Upazila / উপজেলা"
-                .field-wrap
-                  = f.date_field :desired_date, value: DateTime.tomorrow.strftime("%Y-%m-%d"), min: Date.tomorrow, required: true, class: 'appointment_date_field'
-                .plasma-consent-question
-                  .field-wrap
-                    .label-field-title
-                      = f.label 'Tested Before? / আগে টেস্ট করেছেন?'
-                      = f.check_box :second_time, { checked: false }
-                      %br/
-                #plasma-consent
-                  .field-wrap
-                    .label-field-title
-                      = f.label 'Want to Donate Plasma? / প্লাজমা দিতে চান?'
-                      = f.check_box :willing_to_plasma_donation, { checked: false }
-                      %br/
-                .field-wrap
-                  %p.input-label
-                  .label-field-title
-                    = f.label 'Slot / কোন সময়ে আসতে চান'
-                    %br/
-                  .radio-input
-                    .nine_ten_class
-                      .nine-ten-text
-                        .label-field
-                          = f.label :slot_id, '9 AM - 10 AM'
-                      = f.radio_button :slot_id, 'nine_ten', required: true
-                      %br/
-                    .ten_eleven_class
-                      .nine-ten-text
-                        .label-field
-                          = f.label :slot_id, '10 AM - 11 AM'
-                      = f.radio_button :slot_id, 'ten_eleven', required: true
-                      %br/
-                    .eleven_twelve_class
-                      .nine-ten-text
-                        .label-field
-                          = f.label :slot_id, '11 AM - 12 PM'
-                      = f.radio_button :slot_id, 'eleven_twelve'
-                      %br/
-                    .twelve_one_class
-                      .nine-ten-text
-                        .label-field
-                          = f.label :slot_id, '12 PM - 01 PM'
-                      = f.radio_button :slot_id, 'twelve_one'
-                = succeed "Create" do
-                  %button.button.button-block{:type => "submit"}
-            #login
-              %h1 Welcome Back!
-              %form{:action => "/", :method => "post"}
-                .field-wrap
-                  %label
-                    Email Address
-                    %span.req *
-                  %input{:autocomplete => "off", :required => "", :type => "email"}/
-                .field-wrap
-                  %label
-                    Password
-                    %span.req *
-                  %input{:autocomplete => "off", :required => "", :type => "password"}/
-                %p.forgot
-                  %a{:href => "#"} Forgot Password?
-                = succeed "Log" do
-                  %button.button.button-block
-          / tab-content
-        / /form
+                = "Total Sample Collected: " + Appointment.count.to_s
+              %li
+                = "Total Positive Identified: " + Appointment.total_positive.to_s
+              %li
+                = "Total Sample Collected in Last 24 Hours: " + Appointment.sample_collected_last_24_hours.to_s
+              %li
+                = "Total Positive Identified in Last 24 Hours: " + Appointment.total_positive_last_24_hours.to_s

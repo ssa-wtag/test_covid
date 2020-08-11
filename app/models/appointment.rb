@@ -3,6 +3,18 @@ class Appointment < ApplicationRecord
 
   enum slot_id: { nine_ten: 0, ten_eleven: 1, eleven_twelve: 2, twelve_one: 3 }
 
+  scope :total_positive, lambda {
+    Appointment.where(covid_positive: true).count
+  }
+
+  scope :sample_collected_last_24_hours, lambda {
+    Appointment.where('created_at > ?', 24.hours.ago).count
+  }
+
+  scope :total_positive_last_24_hours, lambda {
+    Appointment.where(covid_positive: true).where('created_at > ?', 24.hours.ago).count
+  }
+
   def self.nine_ten_available?(date)
     Appointment.where(desired_date: date).nine_ten.count < 3
   end

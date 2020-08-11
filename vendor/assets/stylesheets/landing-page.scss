@@ -37,7 +37,7 @@ h1 {
 .intro-header {
     padding-top: 50px; /* If you're making other pages, make sure there is 50px of padding to make sure the navbar doesn't overlap content! */
     padding-bottom: 50px;
-    text-align: center;
+    //text-align: center;
     color: #f8f8f8;
     background: url(image_path('intro-bg.jpg')) no-repeat center center;
     background-size: cover;
@@ -51,7 +51,7 @@ h1 {
 
 .intro-message > h1 {
     margin: 0;
-    text-shadow: 2px 2px 3px rgba(0,0,0,0.6);
+    //text-shadow: 2px 2px 3px rgba(0,0,0,0.6);
     font-size: 5em;
 }
 
@@ -62,7 +62,7 @@ h1 {
 }
 
 .intro-message > h3 {
-    text-shadow: 2px 2px 3px rgba(0,0,0,0.6);
+    //text-shadow: 2px 2px 3px rgba(0,0,0,0.6);
 }
 
 @media(max-width:767px) {
@@ -173,4 +173,8 @@ footer {
 
 p.copyright {
     margin: 15px 0 0;
+}
+
+ul {
+    list-style-position: inside;
 }
